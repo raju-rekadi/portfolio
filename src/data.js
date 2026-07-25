@@ -36,12 +36,14 @@ export const stats = [
 // without a dedicated glyph in <TechIcon />.
 export const techs = [
   { name: "React", short: "R", color: "#61DAFB", glyph: "react" },
-  { name: "JavaScript", short: "JS", color: "#F7DF1E" },
-  { name: "Next.js", short: "N", color: "#e5e7eb" },
+  { name: "JavaScript", short: "JS", color: "#F7DF1E", glyph: "js" },
+  { name: "Next.js", short: "N", color: "#e5e7eb", glyph: "nextjs" },
   { name: "Node.js", short: "N", color: "#5FA04E", glyph: "node" },
-  { name: "PostgreSQL", short: "PG", color: "#4169E1" },
-  { name: "Tailwind CSS", short: "TW", color: "#38BDF8" },
-  { name: "React Native", short: "RN", color: "#61DAFB", glyph: "react" },
+  { name: "Express.js", short: "ex", color: "#e5e7eb", glyph: "express" },
+  // Official mark from public/tech/ — see `img` handling in TechIcon.
+  { name: "PostgreSQL", short: "PG", color: "#6BA7DC", img: "tech/postgresql.svg" },
+  { name: "Tailwind CSS", short: "TW", color: "#38BDF8", glyph: "tailwind" },
+  { name: "React Native", short: "RN", color: "#61DAFB", glyph: "reactnative" },
 ];
 
 export const services = [

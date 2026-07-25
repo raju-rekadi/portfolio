@@ -110,40 +110,169 @@ export const ServiceIcon = ({ name, ...p }) => (
 );
 
 /* ---------- Tech tiles ---------- */
+
+const ReactAtom = () => (
+  <>
+    <circle cx="12" cy="12" r="2.1" fill="currentColor" />
+    <g fill="none" stroke="currentColor" strokeWidth="1.1">
+      <ellipse cx="12" cy="12" rx="10" ry="4.2" />
+      <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)" />
+      <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)" />
+    </g>
+  </>
+);
+
+const GLYPHS = {
+  react: <ReactAtom />,
+
+  // React Native — the atom inside a phone body, so it reads distinctly from React.
+  reactnative: (
+    <>
+      <rect
+        x="5.6"
+        y="1.9"
+        width="12.8"
+        height="20.2"
+        rx="2.6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.3"
+      />
+      <path d="M10.4 19.8h3.2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+      <g transform="translate(12 10.6) scale(0.42) translate(-12 -12)">
+        <ReactAtom />
+      </g>
+    </>
+  ),
+
+  // Next.js — the circular mark with the angular N.
+  nextjs: (
+    <>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.3" />
+      <path
+        d="M8.7 16.2V7.8l7 8.4V7.8"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </>
+  ),
+
+  // Node.js — the hexagon.
+  node: (
+    <>
+      <path
+        d="M12 2.2 21 7.4v9.2L12 21.8 3 16.6V7.4l9-5.2Z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.4 15V9.6l5.2 4.8V9"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.35"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </>
+  ),
+
+  // Express — the lowercase "ex" wordmark. The badge supplies the container.
+  express: (
+    <text
+      x="12"
+      y="16.4"
+      textAnchor="middle"
+      fontSize="11.5"
+      fontWeight="800"
+      fontFamily="ui-sans-serif, system-ui, sans-serif"
+      fill="currentColor"
+      stroke="none"
+    >
+      ex
+    </text>
+  ),
+
+  // PostgreSQL — the elephant head, simplified to stay legible at 24px.
+  postgres: (
+    <g fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+      {/* head and back */}
+      <path d="M17.6 4.4c2 1.1 2.9 3.1 2.6 5.6-.2 1.9-.9 3.2-1.7 4.6-.8 1.4-1.1 2.6-.8 4" />
+      {/* brow, ear and jaw */}
+      <path d="M17.6 4.4C14 2.9 9.6 3.6 7.4 6.3c-1.6 2-1.7 4.4-.8 6.8.6 1.5.8 2.7.5 4.1" />
+      <path d="M9.2 7.6c1.5-.9 3.3-1 4.8-.2 1 .5 1.5 1.5 1.4 2.7-.1 1.3-.9 2.2-2.1 2.6-1.3.4-2.6.2-3.8-.4" />
+      {/* trunk */}
+      <path d="M13.3 12.7c.5 1.6.4 3.1-.4 4.5-.5.9-.5 1.7 0 2.4" />
+      {/* tusks */}
+      <path d="M7.1 17.2c-.3 1.3.1 2.3 1.1 3M18.5 18.6c-.2 1.1.1 2 .9 2.6" />
+      {/* eye */}
+      <circle cx="11.4" cy="8.8" r=".85" fill="currentColor" stroke="none" />
+    </g>
+  ),
+
+  // Tailwind CSS — the double wave.
+  tailwind: (
+    <path
+      fill="currentColor"
+      stroke="none"
+      d="M12 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.31.74 1.91 1.35.98 1 2.11 2.15 4.59 2.15 2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.91-1.35C15.61 7.15 14.48 6 12 6zM7 12c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.3.74 1.91 1.35C8.39 16.85 9.52 18 12 18c2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.91-1.35C10.61 13.15 9.48 12 7 12z"
+    />
+  ),
+
+  // JavaScript — the wordmark. The badge supplies the container.
+  js: (
+    <text
+      x="12"
+      y="16.4"
+      textAnchor="middle"
+      fontSize="11"
+      fontWeight="800"
+      fontFamily="ui-sans-serif, system-ui, sans-serif"
+      fill="currentColor"
+      stroke="none"
+    >
+      JS
+    </text>
+  ),
+};
+
 export function TechIcon({ tech }) {
-  const { name, short, color, glyph, dark } = tech;
+  const { name, short, color, glyph } = tech;
+  const mark = GLYPHS[glyph];
   return (
     <span
       title={name}
-      className="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/[0.04] transition hover:-translate-y-1 hover:border-fuchsia-500/40"
+      aria-label={name}
+      className="group/tech grid h-12 w-12 place-items-center rounded-full border transition duration-200 hover:-translate-y-1"
+      style={{
+        // Brand colour drives the whole badge: a faint wash, a stronger ring,
+        // and the mark itself. 8-digit hex is the alpha.
+        backgroundColor: color + "1F",
+        borderColor: color + "59",
+        boxShadow: `0 0 0 0 ${color}00`,
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.boxShadow = `0 6px 18px -6px ${color}80`)}
+      onMouseLeave={(e) => (e.currentTarget.style.boxShadow = `0 0 0 0 ${color}00`)}
     >
-      {glyph === "react" ? (
-        <svg viewBox="0 0 24 24" className="h-6 w-6" style={{ color }}>
-          <circle cx="12" cy="12" r="2.1" fill="currentColor" />
-          <g fill="none" stroke="currentColor" strokeWidth="1.1">
-            <ellipse cx="12" cy="12" rx="10" ry="4.2" />
-            <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)" />
-            <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)" />
-          </g>
-        </svg>
-      ) : glyph === "node" ? (
-        <svg viewBox="0 0 24 24" className="h-6 w-6" style={{ color }}>
-          <path
-            d="M12 2.2 21 7.4v9.2L12 21.8 3 16.6V7.4l9-5.2Z"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.4"
-            strokeLinejoin="round"
-          />
-          <text x="12" y="15.4" textAnchor="middle" fontSize="7" fontWeight="700" fill="currentColor">
-            N
-          </text>
+      {tech.img ? (
+        // Real brand SVG shipped from public/ — keeps its own colours, so it is
+        // not tinted by currentColor like the hand-drawn glyphs.
+        <img
+          src={import.meta.env.BASE_URL + tech.img}
+          alt={name}
+          className="h-[28px] w-[28px] object-contain"
+          loading="lazy"
+        />
+      ) : mark ? (
+        <svg viewBox="0 0 24 24" className="h-[26px] w-[26px]" style={{ color }} role="img">
+          {mark}
         </svg>
       ) : (
-        <span
-          className="text-[13px] font-extrabold leading-none"
-          style={{ color: dark ? color : color }}
-        >
+        <span className="text-[13px] font-extrabold leading-none" style={{ color }}>
           {short}
         </span>
       )}
