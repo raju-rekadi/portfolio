@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-[#0b0616] text-slate-200 antialiased;
+    background-image:
+      radial-gradient(60rem 40rem at 85% -10%, rgba(168, 85, 247, 0.16), transparent 60%),
+      radial-gradient(50rem 34rem at -10% 10%, rgba(236, 72, 153, 0.1), transparent 60%);
+    background-attachment: fixed;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-fuchsia-500 ring-offset-2 ring-offset-[#0b0616];
+    border-radius: 10px;
+  }
+  ::selection {
+    @apply bg-fuchsia-500/30 text-white;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-6xl px-5;
+  }
+  /* Panel with a subtle violet edge, matching the reference look */
+  .panel {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm;
+  }
+  .panel-hover {
+    @apply transition duration-200 hover:-translate-y-1 hover:border-fuchsia-500/40 hover:bg-white/[0.055];
+  }
+  .grad-text {
+    @apply bg-gradient-to-r from-violet-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent;
+  }
+  .btn-grad {
+    @apply inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-500
+           px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-900/40
+           transition hover:-translate-y-0.5 hover:shadow-fuchsia-700/50;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm
+           font-semibold text-slate-100 transition hover:-translate-y-0.5 hover:border-fuchsia-400/60 hover:bg-white/5;
+  }
+  .tag {
+    @apply rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11.5px] font-semibold text-slate-400;
+  }
+  .kicker {
+    @apply text-xs font-bold uppercase tracking-[0.18em] text-fuchsia-400;
+  }
+  .heading {
+    @apply mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl;
+  }
+  /* Dotted texture behind the avatar */
+  .dots {
+    background-image: radial-gradient(rgba(217, 70, 239, 0.55) 1.4px, transparent 1.4px);
+    background-size: 13px 13px;
+  }
+}
