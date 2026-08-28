@@ -8,7 +8,7 @@ import {
 const KIND_STYLES = {
   mobile: "bg-emerald-500/10 text-emerald-300 ring-emerald-500/25",
   web: "bg-sky-500/10 text-sky-300 ring-sky-500/25",
-  both: "bg-fuchsia-500/10 text-fuchsia-300 ring-fuchsia-500/25",
+  both: "bg-emerald-500/10 text-emerald-300 ring-emerald-500/25",
 };
 const KIND_LABELS = { mobile: "Mobile", web: "Web", both: "Mobile + Web" };
 
@@ -40,12 +40,12 @@ function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0b0616]/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#04100c]/80 backdrop-blur-xl">
       <div className="wrap flex h-16 items-center justify-between gap-4">
         <a href="#top" className="text-lg font-extrabold tracking-tight text-white">
           {profile.logoA}
           <span className="grad-text">{profile.logoB}</span>
-          <span className="text-fuchsia-400">.</span>
+          <span className="text-emerald-400">.</span>
         </a>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -62,7 +62,7 @@ function Nav() {
               >
                 {l.label}
                 {on && (
-                  <span className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-400" />
+                  <span className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-gradient-to-r from-emerald-400 to-teal-300" />
                 )}
               </a>
             );
@@ -72,7 +72,7 @@ function Nav() {
         <div className="flex items-center gap-2">
           <a
             href={`mailto:${profile.email}`}
-            className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-500 px-4 py-2 text-[13px] font-semibold text-white transition hover:brightness-110 sm:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 px-4 py-2 text-[13px] font-bold text-[#04100c] transition hover:brightness-110 sm:inline-flex"
           >
             <DownloadIcon className="h-4 w-4" />
             Hire me
@@ -89,7 +89,7 @@ function Nav() {
       </div>
 
       {open && (
-        <nav className="border-t border-white/10 bg-[#0b0616] px-5 py-3 lg:hidden">
+        <nav className="border-t border-white/10 bg-[#04100c] px-5 py-3 lg:hidden">
           {navLinks.map((l) => (
             <a
               key={l.href}
@@ -113,9 +113,9 @@ function Avatar() {
     <div className="relative mx-auto w-full max-w-[19rem] lg:max-w-[22rem]">
       <div aria-hidden className="dots absolute -right-4 -top-4 h-24 w-24 rounded-xl opacity-70" />
       <div aria-hidden className="dots absolute -bottom-4 -left-4 h-24 w-24 rounded-xl opacity-70" />
-      <div aria-hidden className="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-violet-600/50 to-fuchsia-500/40 blur-3xl" />
-      <div className="rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 p-1.5">
-        <div className="aspect-square overflow-hidden rounded-full bg-[#150c28]">
+      <div aria-hidden className="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-emerald-500/45 to-teal-400/35 blur-3xl" />
+      <div className="rounded-full bg-gradient-to-br from-emerald-500 to-teal-400 p-1.5">
+        <div className="aspect-square overflow-hidden rounded-full bg-[#07201a]">
           {failed ? (
             <div className="grid h-full w-full place-items-center">
               <span className="grad-text text-7xl font-extrabold">{profile.initial}</span>
@@ -147,7 +147,7 @@ function Hero() {
             {profile.name}
           </h1>
 
-          <p className="mt-2 text-sm font-bold uppercase tracking-[0.16em] text-fuchsia-400 sm:text-base">
+          <p className="mt-2 text-sm font-bold uppercase tracking-[0.16em] text-emerald-400 sm:text-base">
             {profile.role}
           </p>
 
@@ -178,10 +178,10 @@ function Hero() {
       <div className="wrap mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {services.map((s) => (
           <div key={s.title} className="panel panel-hover p-5">
-            <span className="grid h-11 w-11 place-items-center rounded-xl border border-fuchsia-500/30 bg-fuchsia-500/10 text-fuchsia-300">
+            <span className="grid h-11 w-11 place-items-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-300">
               <ServiceIcon name={s.icon} className="h-5 w-5" />
             </span>
-            <h3 className="mt-4 font-semibold text-fuchsia-300">{s.title}</h3>
+            <h3 className="mt-4 font-semibold text-emerald-300">{s.title}</h3>
             <p className="mt-1.5 text-[13.5px] leading-relaxed text-slate-400">{s.body}</p>
           </div>
         ))}
@@ -216,7 +216,7 @@ function ProjectCard({ p }) {
               href={p.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 hover:text-fuchsia-300"
+              className="inline-flex items-center gap-1.5 hover:text-emerald-300"
             >
               {p.title}
               <ExternalIcon className="h-3.5 w-3.5 opacity-0 transition group-hover:opacity-100" />
@@ -271,7 +271,7 @@ function Contact() {
           rel="noopener noreferrer"
           className="panel panel-hover flex items-center gap-3.5 p-4"
         >
-          <span className="grid h-11 w-11 flex-none place-items-center rounded-xl border border-fuchsia-500/30 bg-fuchsia-500/10 text-fuchsia-300">
+          <span className="grid h-11 w-11 flex-none place-items-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-300">
             <Icon className="h-5 w-5" />
           </span>
           <span className="min-w-0">
@@ -318,7 +318,7 @@ export default function App() {
           <div className="grid gap-4 md:grid-cols-3">
             {skills.map((s) => (
               <div key={s.group} className="panel p-5">
-                <h3 className="mb-3 text-[13px] font-bold uppercase tracking-wider text-fuchsia-300">{s.group}</h3>
+                <h3 className="mb-3 text-[13px] font-bold uppercase tracking-wider text-emerald-300">{s.group}</h3>
                 <div className="flex flex-wrap gap-1.5">
                   {s.items.map((i) => (
                     <span key={i} className="tag">
@@ -348,7 +348,7 @@ export default function App() {
           <div className="grid gap-4">
             {experience.map((job) => (
               <article key={job.company} className="panel relative overflow-hidden p-5 pl-6">
-                <span className="absolute inset-y-5 left-0 w-[3px] rounded-full bg-gradient-to-b from-violet-500 to-fuchsia-400" />
+                <span className="absolute inset-y-5 left-0 w-[3px] rounded-full bg-gradient-to-b from-emerald-400 to-teal-300" />
 
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                   <h3 className="text-[1.05rem] font-semibold tracking-tight text-white">
@@ -369,7 +369,7 @@ export default function App() {
                   {job.client && (
                     <>
                       {" · Client: "}
-                      <span className="font-semibold text-fuchsia-300/90">{job.client}</span>
+                      <span className="font-semibold text-emerald-300/90">{job.client}</span>
                     </>
                   )}
                 </p>
@@ -381,7 +381,7 @@ export default function App() {
                     href={job.link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-fuchsia-500/30 bg-fuchsia-500/10 px-3 py-1.5 text-[12.5px] font-semibold text-fuchsia-300 transition hover:border-fuchsia-400/60 hover:bg-fuchsia-500/20"
+                    className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-[12.5px] font-semibold text-emerald-300 transition hover:border-emerald-400/60 hover:bg-emerald-500/20"
                   >
                     {job.link.label}
                     <ExternalIcon className="h-3.5 w-3.5" />
@@ -392,7 +392,7 @@ export default function App() {
                   <ol className="mt-4 space-y-3 border-l border-white/10 pl-4">
                     {job.roles.map((r) => (
                       <li key={r.title} className="relative">
-                        <span className="absolute -left-[21px] top-1.5 h-2 w-2 rounded-full bg-fuchsia-400/70 ring-4 ring-fuchsia-500/10" />
+                        <span className="absolute -left-[21px] top-1.5 h-2 w-2 rounded-full bg-emerald-400/70 ring-4 ring-emerald-500/10" />
                         <div className="flex flex-wrap items-baseline justify-between gap-x-3">
                           <strong className="text-[14px] font-semibold text-slate-200">{r.title}</strong>
                           <span className="text-[12px] tabular-nums text-slate-500">{r.period}</span>
