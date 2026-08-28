@@ -16,8 +16,8 @@ export const profile = {
   phoneHref: "tel:+919502458428",
   linkedin: "https://www.linkedin.com/in/rajurekadi7",
   github: "https://github.com/raju-rekadi",
-  // Drop a square photo at public/profile.jpg and it will be used automatically.
-  photo: "profile.jpg",
+  // Drop a square photo at public/profile.jpeg and it will be used automatically.
+  photo: "profile.jpeg",
   available: true,
   about:
     "A full-stack developer with 7+ years of experience building React and Node web platforms — bill tracking, single sign-on, asset and reporting systems used across Andhra Pradesh — alongside the React Native apps that feed them. Currently a Senior Software Engineer at OM Systems and Services, working on-site for AP TRANSCO.",
