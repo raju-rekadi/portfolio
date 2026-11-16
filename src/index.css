@@ -72,4 +72,182 @@
     background-image: radial-gradient(rgba(52, 211, 153, 0.5) 1.4px, transparent 1.4px);
     background-size: 13px 13px;
   }
+
+  /* Cursor spotlight on hoverable cards (--mx/--my set from JS) */
+  .panel-hover {
+    background-image: radial-gradient(
+      420px circle at var(--mx, -999px) var(--my, -999px),
+      rgba(16, 185, 129, 0.13),
+      transparent 45%
+    );
+  }
+  .panel-hover:hover {
+    box-shadow: 0 18px 40px -22px rgba(16, 185, 129, 0.45);
+  }
+
+  .tag-hover {
+    @apply cursor-default transition duration-200 hover:-translate-y-0.5 hover:border-emerald-400/50 hover:bg-emerald-500/10 hover:text-emerald-200;
+  }
+  .tech-hover > * {
+    @apply transition duration-200;
+  }
+  .tech-hover:hover > * {
+    transform: translateY(-4px) scale(1.08);
+  }
+
+  /* Kicker with a short line that draws in on reveal */
+  .kicker-line {
+    @apply inline-flex items-center gap-3;
+  }
+  .kicker-line::before {
+    content: "";
+    @apply h-px w-8 bg-gradient-to-r from-emerald-400 to-teal-300;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s;
+  }
+  .kicker-line.is-visible::before,
+  html:not(.reveal-ready) .kicker-line::before {
+    transform: scaleX(1);
+  }
+
+  /* Experience accent bar grows when the card appears */
+  .grow-y {
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s;
+  }
+  .is-visible .grow-y,
+  html:not(.reveal-ready) .grow-y {
+    transform: scaleY(1);
+  }
+
+  /* Rotating conic ring around the avatar */
+  .avatar-ring {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .avatar-ring::before {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    z-index: 0;
+    background: conic-gradient(from 0deg, #10b981, #2dd4bf, #bef264, #10b981, #2dd4bf, #10b981);
+    animation: spin 8s linear infinite;
+  }
+
+  .grad-shimmer {
+    background-image: linear-gradient(90deg, #2dd4bf, #34d399, #bef264, #34d399, #2dd4bf);
+    background-size: 200% auto;
+    animation: shimmer 7s linear infinite;
+  }
+
+  .float { animation: float 6s ease-in-out infinite; }
+  .drift { animation: drift 9s ease-in-out infinite; }
+  .drift-rev { animation: drift 9s ease-in-out infinite reverse; }
+  .pulse-glow { animation: pulse-glow 5s ease-in-out infinite; }
+
+  /* Gold accents for awards */
+  .award-chip {
+    @apply inline-flex items-center gap-1 rounded-full bg-amber-400/10 px-2.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wider text-amber-200 ring-1 ring-amber-400/30 transition hover:bg-amber-400/20;
+  }
+  .award-card {
+    @apply border-amber-400/20;
+  }
+  .award-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 35%, rgba(251, 191, 36, 0.09) 50%, transparent 65%);
+    background-size: 250% 100%;
+    animation: sheen 5s ease-in-out infinite;
+  }
+  .award-medal {
+    background: conic-gradient(from 200deg, #fbbf24, #fde68a, #f59e0b, #fde68a, #fbbf24);
+    box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.12), 0 12px 40px -10px rgba(251, 191, 36, 0.55);
+    animation: float 5s ease-in-out infinite;
+  }
+
+  /* Soft blurred orbs drifting behind the hero */
+  .orb {
+    position: absolute;
+    z-index: -1;
+    border-radius: 9999px;
+    filter: blur(70px);
+    pointer-events: none;
+  }
+  .orb-a {
+    width: 22rem; height: 22rem; top: -6rem; left: -8rem;
+    background: rgba(16, 185, 129, 0.16);
+    animation: orb 18s ease-in-out infinite;
+  }
+  .orb-b {
+    width: 18rem; height: 18rem; bottom: 2rem; right: -6rem;
+    background: rgba(45, 212, 191, 0.13);
+    animation: orb 22s ease-in-out infinite reverse;
+  }
+}
+
+/* ------------------------------------------------------- Scroll reveal */
+/* Uses the `translate`/`scale` properties (not `transform`) so the fill
+   doesn't fight Tailwind's hover transforms on the same element. */
+.reveal-ready [data-reveal]:not(.is-visible) {
+  opacity: 0;
+}
+[data-reveal].is-visible {
+  animation: reveal-up 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both;
+}
+[data-reveal="left"].is-visible { animation-name: reveal-left; }
+[data-reveal="pop"].is-visible { animation-name: reveal-pop; }
+[data-reveal="zoom"].is-visible { animation-name: reveal-zoom; animation-duration: 1s; }
+
+@keyframes reveal-up {
+  from { opacity: 0; translate: 0 26px; }
+  to { opacity: 1; translate: none; }
+}
+@keyframes reveal-left {
+  from { opacity: 0; translate: -30px 0; }
+  to { opacity: 1; translate: none; }
+}
+@keyframes reveal-pop {
+  from { opacity: 0; scale: 0.6; }
+  70% { scale: 1.08; }
+  to { opacity: 1; scale: none; }
+}
+@keyframes reveal-zoom {
+  from { opacity: 0; scale: 0.85; filter: blur(8px); }
+  to { opacity: 1; scale: none; filter: none; }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes sheen {
+  0% { background-position: 100% 0; }
+  60%, 100% { background-position: -150% 0; }
+}
+@keyframes shimmer { to { background-position: 200% center; } }
+@keyframes float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -12px; }
+}
+@keyframes drift {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 8px 10px; }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.75; scale: 1; }
+  50% { opacity: 1; scale: 1.06; }
+}
+@keyframes orb {
+  0%, 100% { translate: 0 0; }
+  33% { translate: 6rem 3rem; }
+  66% { translate: -2rem 5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal].is-visible { animation-delay: 0ms !important; }
+  .float, .drift, .drift-rev, .pulse-glow, .orb, .grad-shimmer, .avatar-ring::before,
+  .award-card::after, .award-medal {
+    animation: none !important;
+  }
 }

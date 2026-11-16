@@ -121,7 +121,8 @@ export const projects = [
   {
     title: "Bill Tracking System",
     kind: "web",
-    meta: "AP TRANSCO",
+    meta: "AP TRANSCO · Live since Jul 2026",
+    award: "Award-winning",
     blurb:
       "End-to-end bill lifecycle tracking, from vendor submission through engineering approval to accounts settlement.",
     points: [
@@ -238,11 +239,32 @@ export const education = [
   { title: "SSC", where: "ZPP High School · Board of Secondary Education", when: "2012 · GPA 8.8" },
 ];
 
+// `images`: files in public/awards/ — e.g. { src: "awards/certificate.jpg", caption: "..." }
+export const awards = [
+  {
+    title: "Certificate of Meritorious Service",
+    issuer: "AP TRANSCO",
+    when: "15 Aug 2026",
+    occasion: "Certificate & memento · 80th Independence Day celebrations",
+    project: "Bill Tracking System",
+    body:
+      "Awarded for distinguished service and technical excellence in the ERP Wing — for contributing significantly to the successful development and implementation of the Bill Tracking System, live in production since 1 July 2026.",
+    link: "https://www.linkedin.com/in/rajurekadi7/recent-activity/all/",
+    images: [
+      { src: "awards/certificate.jpg", caption: "Certificate of Meritorious Service" },
+      { src: "awards/memento.jpg", caption: "Memento — 15 Aug 2026" },
+      { src: "awards/ceremony-1.jpg", caption: "Receiving the award" },
+      { src: "awards/ceremony-2.jpg", caption: "Independence Day ceremony, AP TRANSCO" },
+    ],
+  },
+];
+
 export const navLinks = [
   { href: "#top", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
+  { href: "#awards", label: "Awards" },
   { href: "#work", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ];
